@@ -53,6 +53,14 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>AmsiPro-Black.otf</string>
+		<string>AmsiPro-Bold.otf</string>
+		<string>AmsiPro-Italic.otf</string>
+		<string>AmsiPro-Light.otf</string>
+		<string>AmsiPro-Regular.otf</string>
+		<string>AmsiPro-SemiBold.otf</string>
+		<string>AmsiPro-Ultra.otf</string>
+		<string>AmsiPro-XLight.otf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
 		<string>Feather.ttf</string>

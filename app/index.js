@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import EStyleSheet from 'react-native-extended-stylesheet';
 import SplashScreen from 'react-native-splash-screen';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-import LoginSignup from './screens/LoginSignup';
+import { LoginSignup } from './Screens';
+import { Colors, Metrics } from './Themes';
 
 EStyleSheet.build({
-  $primaryYellow: '#FECF33',
-  $primaryLightOrange: '#FDBD39',
-  $primaryPeach: '#EE6723',
+  ...Colors,
+  ...Metrics,
 });
 
 class App extends Component {
