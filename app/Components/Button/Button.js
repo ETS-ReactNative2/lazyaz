@@ -13,7 +13,7 @@ import { Constants } from '../../Themes';
 
 const Button = ({
   height = 48,
-  width = '80%',
+  width = '75%',
   text,
   type,
   logo,

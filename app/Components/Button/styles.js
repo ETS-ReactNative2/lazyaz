@@ -8,6 +8,10 @@ const styles = EStyleSheet.create({
   gradientWrapper: {
     borderRadius: 100,
   },
+  buttonContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   button: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -31,9 +35,14 @@ const styles = EStyleSheet.create({
   darkText: {
     color: '$black',
   },
+  buttonText: {
+    letterSpacing: 1,
+    marginBottom: '7rem',
+    opacity: 0.7,
+  },
   logo: {
     resizeMode: 'contain',
-    paddingRight: '10%',
+    paddingHorizontal: '5%',
   },
 });
 

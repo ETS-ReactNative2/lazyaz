@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import { GradientButton, GradientContainer } from '../../Components';
+import { BG_PAPERBAG } from '../../Images';
 import styles from './styles';
 
 class Onboarding extends Component {
@@ -21,7 +22,7 @@ class Onboarding extends Component {
         <StatusBar translucent={false} barStyle="dark-content" />
         <View style={styles.mainContainer}>
           <Image
-            source={require('../../Images/Backgrounds/paperbag2.png')}
+            source={BG_PAPERBAG}
             style={styles.image}
           />
           <View style={styles.bottomContainer}>

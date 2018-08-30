@@ -1,7 +1,11 @@
 const BTN_LIGHT = 'BTN_LIGHT';
 const BTN_DARK = 'BTN_DARK';
+const INPUT_EMAIL = 'EMAIL';
+const INPUT_PASSWORD = 'PASSWORD';
 
 export default {
   BTN_LIGHT,
   BTN_DARK,
+  INPUT_EMAIL,
+  INPUT_PASSWORD,
 };
