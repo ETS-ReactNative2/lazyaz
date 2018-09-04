@@ -10,9 +10,14 @@ const Card = ({
   title,
   places,
 }) => (
-  <ImageBackground source={image} style={styles.background}>
+  <ImageBackground
+    source={image}
+    style={styles.background}
+  >
     <View style={[styles.overlay]} />
-    <Text style={styles.title}>{title.toUpperCase()}</Text>
+    <Text style={styles.title}>
+      {title.toUpperCase()}
+    </Text>
     <Chip places={places} />
   </ImageBackground>
 );

@@ -7,7 +7,10 @@ import styles from './styles';
 
 const ImageContainer = ({ children }) => (
   <SafeAreaView>
-    <ImageBackground source={BG_PIZZA} style={styles.background}>
+    <ImageBackground
+      source={BG_PIZZA}
+      style={styles.background}
+    >
       <View style={styles.overlay} />
       {children}
     </ImageBackground>

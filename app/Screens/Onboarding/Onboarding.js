@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
   View,
@@ -16,6 +17,11 @@ class Onboarding extends Component {
     this.props = props;
   }
 
+  handlePressExplore = () => {
+    const { navigation } = this.props;
+    navigation.navigate('LoginSignup');
+  }
+
   render() {
     return (
       <GradientContainer>
@@ -31,6 +37,7 @@ class Onboarding extends Component {
               text="Explore LazyAz"
               height={40}
               width="50%"
+              onPress={this.handlePressExplore}
             />
           </View>
         </View>
@@ -38,5 +45,9 @@ class Onboarding extends Component {
     );
   }
 }
+
+Onboarding.propTypes = {
+  navigation: PropTypes.object,
+};
 
 export default Onboarding;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
   Text,
@@ -28,12 +29,23 @@ class LogIn extends Component {
     this.props = props;
   }
 
+  handlePressLogin = () => {
+    const { navigation } = this.props;
+    navigation.navigate('MainRoutes');
+  }
+
+  handlePressBack = () => {
+    const { navigation } = this.props;
+    navigation.goBack(null);
+  }
+
   render() {
     return (
       <ImageContainer>
         <Header
           iconLeft={ICON_ARROW_LEFT}
           iconMiddle={ICON_PROFILE}
+          onPressIconLeft={this.handlePressBack}
           text="Log In"
         />
         <View style={styles.container}>
@@ -67,10 +79,15 @@ class LogIn extends Component {
               <Separator />
             </View>
             <TouchableOpacity style={styles.textContainer}>
-              <Text style={styles.text}>Forgot password?</Text>
+              <Text style={styles.text}>
+                Forgot password?
+              </Text>
             </TouchableOpacity>
             <View style={styles.row}>
-              <GradientButton text="Log In" />
+              <GradientButton
+                text="Log In"
+                onPress={this.handlePressLogin}
+              />
             </View>
           </View>
           <View style={styles.bottomItems}>
@@ -83,5 +100,9 @@ class LogIn extends Component {
     );
   }
 }
+
+LogIn.propTypes = {
+  navigation: PropTypes.object,
+};
 
 export default LogIn;

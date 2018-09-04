@@ -6,7 +6,9 @@ import styles from './styles';
 
 const Chip = ({ places }) => (
   <View style={styles.container}>
-    <Text style={styles.text}>{`${places} places`}</Text>
+    <Text style={styles.text}>
+      {`${places} places`}
+    </Text>
   </View>
 );
 

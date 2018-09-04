@@ -15,23 +15,34 @@ const Header = ({
   iconLeft,
   iconMiddle,
   iconRight,
+  onPressIconLeft,
+  onPressIconRight,
+  onPressLocation,
   text,
 }) => (
   <Container
     backgroundColor={iconMiddle ? null : styles.$backgroundColor}
   >
     <View style={styles.topContainer}>
-      <ImageButton source={iconLeft} />
+      <ImageButton
+        source={iconLeft}
+        onPress={onPressIconLeft}
+      />
       {iconMiddle
         ? <Image source={iconMiddle} style={styles.image} />
         : (
           <View>
-            <TouchableOpacity style={styles.location}>
+            <TouchableOpacity
+              style={styles.location}
+              onPress={onPressLocation}
+            >
               <Image
                 style={[styles.image, styles.locationIcon]}
                 source={ICON_ARROW_LOCATION_DARK}
               />
-              <Text style={styles.locationText}>Enter your address</Text>
+              <Text style={styles.locationText}>
+                Enter your address
+              </Text>
               <Image
                 style={[styles.image, styles.locationIcon]}
                 source={ICON_ARROW_DROPDOWN}
@@ -40,7 +51,11 @@ const Header = ({
           </View>
         )
       }
-      <ImageButton source={iconRight} style={styles.image} />
+      <ImageButton
+        source={iconRight}
+        style={styles.image}
+        onPress={onPressIconRight}
+      />
     </View>
     <View style={styles.bottomContainer}>
       { text
@@ -61,6 +76,9 @@ Header.propTypes = {
   iconLeft: PropTypes.number,
   iconMiddle: PropTypes.number,
   iconRight: PropTypes.number,
+  onPressIconLeft: PropTypes.func,
+  onPressIconRight: PropTypes.func,
+  onPressLocation: PropTypes.func,
   text: PropTypes.string,
 };
 

@@ -11,7 +11,9 @@ const GradientContainer = ({ children }) => (
     start={{ x: 0.2, y: 0.0 }}
     end={{ x: 0.0, y: 0.1 }}
   >
-    <SafeAreaView>{children}</SafeAreaView>
+    <SafeAreaView>
+      {children}
+    </SafeAreaView>
   </LinearGradient>
 );
 

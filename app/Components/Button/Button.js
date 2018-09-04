@@ -8,8 +8,9 @@ import {
 } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
-import styles from './styles';
+import { ICON_FACEBOOK } from '../../Images';
 import { Constants } from '../../Themes';
+import styles from './styles';
 
 const Button = ({
   height = 48,
@@ -42,8 +43,15 @@ const Button = ({
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={buttonStyles}>
-        {logo && <Image style={styles.logo} source={require('../../Images/Icons/facebook.png')} />}
-        <Text style={textStyles}>{text.toUpperCase()}</Text>
+        {logo && (
+          <Image
+            style={styles.logo}
+            source={ICON_FACEBOOK}
+          />
+        )}
+        <Text style={textStyles}>
+          {text.toUpperCase()}
+        </Text>
       </View>
     </TouchableOpacity>
   );
