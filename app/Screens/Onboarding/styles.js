@@ -26,7 +26,7 @@ const styles = EStyleSheet.create({
   text: {
     textAlign: 'center',
     lineHeight: '40rem',
-    color: '$primaryText',
+    color: '$primaryColor',
     fontFamily: Fonts.type.xlight,
     fontSize: '42rem',
     '@media android': {

@@ -20,7 +20,7 @@ const styles = EStyleSheet.create({
   text: {
     textAlign: 'center',
     fontFamily: Fonts.type.bold,
-    fontSize: `${Fonts.size.small}rem`,
+    fontSize: Fonts.size.small,
     letterSpacing: 1,
   },
   lightButton: {

@@ -12,9 +12,12 @@ const type = {
 const size = {
   regular: '17rem',
   base: '16rem',
-  medium: '14rem',
+  medium: '15rem',
   small: '12rem',
   tiny: '8.5rem',
+
+  tabNavigator: '11rem',
+  chip: '13rem',
 };
 
 export default { type, size };

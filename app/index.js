@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-import { LogIn } from './Screens';
+import Navigator from './Config/Routes';
 import { Colors, Metrics } from './Themes';
 
 EStyleSheet.build({
@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
     return (
-      <LogIn />
+      <Navigator onNavigationStateChange={null} />
     );
   }
 }

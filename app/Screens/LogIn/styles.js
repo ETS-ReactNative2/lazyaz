@@ -1,38 +1,16 @@
-import { StyleSheet } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import { Fonts } from '../../Themes';
 
 const styles = EStyleSheet.create({
-  topContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: '36rem',
-  },
-  bottomContainer: {
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  headerTextContainer: {
-    position: 'absolute',
-    top: 0,
-    marginTop: '5%',
-  },
   textContainer: {
     alignSelf: 'flex-end',
     marginBottom: '3%',
-  },
-  topLeftItem: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  topRightItem: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
   },
   bottomItems: {
     justifyContent: 'space-between',
@@ -40,27 +18,16 @@ const styles = EStyleSheet.create({
     bottom: 0,
     marginBottom: '10%',
   },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: '$overlay',
-  },
   text: {
     fontFamily: Fonts.type.regular,
-    fontSize: `${Fonts.size.small}rem`,
+    fontSize: Fonts.size.small,
     color: '$white',
     justifyContent: 'flex-end',
-  },
-  headerText: {
-    textAlign: 'center',
-    fontFamily: Fonts.type.bold,
-    fontSize: `${Fonts.size.small}rem`,
-    letterSpacing: 1,
-    color: '$white',
   },
   textInput: {
     alignContent: 'flex-start',
     fontFamily: Fonts.type.semibold,
-    fontSize: `${Fonts.size.small}rem`,
+    fontSize: Fonts.size.small,
     letterSpacing: 1,
     color: '$white',
     '@media ios': {
@@ -69,16 +36,6 @@ const styles = EStyleSheet.create({
     '@media android': {
       paddingBottom: '-5rem',
     },
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-  },
-  profileImage: {
-    resizeMode: 'contain',
-  },
-  arrowLeft: {
-    marginLeft: '10%',
   },
   row: {
     paddingVertical: '10rem',
