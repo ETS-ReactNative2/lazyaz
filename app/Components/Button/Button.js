@@ -9,7 +9,7 @@ import {
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 import { ICON_FACEBOOK } from '../../Images';
-import { Constants } from '../../Themes';
+import { BTN_DARK, BTN_LIGHT } from '../../Constants/TextConstants';
 import styles from './styles';
 
 const Button = ({
@@ -28,9 +28,9 @@ const Button = ({
       flexDirection: logo ? 'row' : null,
     },
   ];
-  if (type === Constants.BTN_LIGHT) {
+  if (type === BTN_LIGHT) {
     buttonStyles.push(styles.lightButton);
-  } else if (type === Constants.BTN_DARK) {
+  } else if (type === BTN_DARK) {
     buttonStyles.push(styles.darkButton);
   }
 
@@ -38,7 +38,7 @@ const Button = ({
     styles.text,
     { lineHeight: height },
   ];
-  textStyles.push(type === Constants.BTN_LIGHT ? styles.darkText : styles.lightText);
+  textStyles.push(type === BTN_LIGHT ? styles.darkText : styles.lightText);
 
   return (
     <TouchableOpacity onPress={onPress}>

@@ -2,9 +2,12 @@ import { StyleSheet } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const styles = EStyleSheet.create({
-  separator: {
+  line: {
     backgroundColor: '$white',
     height: StyleSheet.hairlineWidth,
+  },
+  space: {
+    marginBottom: '1rem',
   },
 });
 

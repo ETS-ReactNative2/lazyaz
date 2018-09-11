@@ -1,4 +1,5 @@
-import Separator from './Separator';
+import SeparatorLine from './SeparatorLine';
+import SeparatorSpace from './SeparatorSpace';
 import styles from './styles';
 
-export { Separator, styles };
+export { SeparatorLine, SeparatorSpace, styles };

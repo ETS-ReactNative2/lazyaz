@@ -3,7 +3,7 @@ import { Card } from './Card';
 import { Chip } from './Chip';
 import { Container, GradientContainer, ImageContainer } from './Container';
 import { Header } from './Header';
-import { Separator } from './Separator';
+import { SeparatorLine, SeparatorSpace } from './Separator';
 import { TabItem } from './TabItem';
 
 export {
@@ -16,6 +16,7 @@ export {
   Header,
   ImageButton,
   ImageContainer,
-  Separator,
+  SeparatorLine,
+  SeparatorSpace,
   TabItem,
 };
