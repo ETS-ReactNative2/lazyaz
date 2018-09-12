@@ -1,4 +1,3 @@
-import { NavigationActions } from 'react-navigation';
 import {
   call,
   put,
@@ -40,7 +39,6 @@ function* login(action) {
       type: LOGIN_SUCCESS,
       auth: response.data,
     });
-    yield put(NavigationActions.navigate({ routeName: 'Authenticated' }));
   } catch (error) {
     yield put({
       type: LOGIN_FAILURE,

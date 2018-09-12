@@ -4,7 +4,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 
-import { RootNavigator } from './Config/Routes';
+import createRootNavigator from './Config/Routes';
 import { Colors, Metrics } from './Themes';
 import configureStore from './Config/Store';
 
@@ -26,6 +26,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+    // check auth available in redux store
     persistStore(store, {}, () => {
       this.setState({
         checkedSignIn: true,
@@ -43,7 +44,7 @@ class App extends Component {
     if (!checkedSignIn) {
       return null;
     }
-    const Layout = RootNavigator(isSignedIn);
+    const Layout = createRootNavigator(isSignedIn);
     return (
       <Provider store={store}>
         <Layout />

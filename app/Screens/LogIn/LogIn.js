@@ -26,12 +26,19 @@ import styles from './styles';
 import { login } from '../../Actions/User';
 
 class LogIn extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       password: '',
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { auth } = this.props;
+    if (auth !== nextProps.auth) {
+      this.handleNavigation();
+    }
   }
 
   handlePressLogin = () => {
@@ -42,11 +49,6 @@ class LogIn extends Component {
     }
   }
 
-  handlePressBack = () => {
-    const { navigation } = this.props;
-    navigation.goBack(null);
-  }
-
   handleChangeUsername = (text) => {
     this.setState({ username: text });
   }
@@ -55,14 +57,20 @@ class LogIn extends Component {
     this.setState({ password: text });
   }
 
+  handleNavigation = () => {
+    const { navigation } = this.props;
+    navigation.navigate('Authenticated');
+  }
+
   render() {
+    const { navigation } = this.props;
     return (
       <ImageContainer>
         <Header
           iconLeft={ICON_ARROW_LEFT}
           iconMiddle={ICON_PROFILE}
-          onPressIconLeft={this.handlePressBack}
           text="Log In"
+          navigation={navigation}
         />
         <View style={styles.container}>
           <View style={styles.middleItems}>
@@ -122,6 +130,11 @@ class LogIn extends Component {
 LogIn.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
+  auth: PropTypes.object,
 };
 
-export default connect()(LogIn);
+const mapStateToProps = state => ({
+  auth: state.user.auth,
+});
+
+export default connect(mapStateToProps)(LogIn);

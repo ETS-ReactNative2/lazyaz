@@ -58,11 +58,11 @@ const Authenticated = createStackNavigator(
   {
     MainRoutes: {
       screen: MainRoutes,
-      navigationOptions: {
+      navigationOptions: ({ navigation }) => ({
         header: () => (
-          <Header iconLeft={ICON_PROFILE_DARK} iconRight={ICON_ORDER} />
+          <Header iconLeft={ICON_PROFILE_DARK} iconRight={ICON_ORDER} navigation={navigation} />
         ),
-      },
+      }),
     },
   },
   {
@@ -92,11 +92,11 @@ const NotAuthenticated = createStackNavigator(
     },
     MainRoutes: {
       screen: MainRoutes,
-      navigationOptions: {
+      navigationOptions: ({ navigation }) => ({
         header: () => (
-          <Header iconLeft={ICON_PROFILE_DARK} />
+          <Header iconLeft={ICON_PROFILE_DARK} navigation={navigation} />
         ),
-      },
+      }),
     },
   },
   {
@@ -104,7 +104,7 @@ const NotAuthenticated = createStackNavigator(
   },
 );
 
-const RootNavigator = (isSignedIn: false) => (
+const createRootNavigator = (isSignedIn: false) => (
   createSwitchNavigator(
     {
       Authenticated: {
@@ -120,4 +120,4 @@ const RootNavigator = (isSignedIn: false) => (
   )
 );
 
-export { RootNavigator, NotAuthenticated };
+export default createRootNavigator;

@@ -47,6 +47,7 @@ Main.propTypes = {
 
 const mapStateToProps = state => ({
   category: state.main.category,
+  auth: state.user.auth,
 });
 
 export default connect(mapStateToProps)(Main);
