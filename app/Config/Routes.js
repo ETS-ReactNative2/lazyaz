@@ -1,11 +1,15 @@
 import React from 'react';
-import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
+import {
+  createStackNavigator,
+  createMaterialTopTabNavigator,
+  createSwitchNavigator,
+} from 'react-navigation';
 
 import { Header, TabItem } from '../Components';
 import {
   LogIn,
   LoginSignup,
-  MainFood,
+  Main,
   MainGoods,
   Onboarding,
 } from '../Screens';
@@ -14,20 +18,20 @@ import { Colors } from '../Themes';
 
 const MainRoutes = createMaterialTopTabNavigator(
   {
-    MainFood: {
-      screen: MainFood,
+    Main: {
+      screen: props => <Main {...props} title="Food" />,
       navigationOptions: {
         tabBarLabel: props => <TabItem title="Food" {...props} />,
       },
     },
     MainGoods: {
-      screen: MainGoods,
+      screen: props => <Main {...props} title="Goods" />,
       navigationOptions: {
         tabBarLabel: props => <TabItem title="Goods" {...props} />,
       },
     },
     MainServices: {
-      screen: MainGoods,
+      screen: props => <Main {...props} title="Services" />,
       navigationOptions: {
         tabBarLabel: props => <TabItem title="Services" {...props} />,
       },
@@ -50,13 +54,23 @@ const MainRoutes = createMaterialTopTabNavigator(
   },
 );
 
-MainRoutes.navigationOptions = {
-  header: () => (
-    <Header iconLeft={ICON_PROFILE_DARK} iconRight={ICON_ORDER} />
-  ),
-};
+const Authenticated = createStackNavigator(
+  {
+    MainRoutes: {
+      screen: MainRoutes,
+      navigationOptions: ({ navigation }) => ({
+        header: () => (
+          <Header iconLeft={ICON_PROFILE_DARK} iconRight={ICON_ORDER} navigation={navigation} />
+        ),
+      }),
+    },
+  },
+  {
+    mode: 'modal',
+  },
+);
 
-const Router = createStackNavigator(
+const NotAuthenticated = createStackNavigator(
   {
     Onboarding: {
       screen: Onboarding,
@@ -78,6 +92,11 @@ const Router = createStackNavigator(
     },
     MainRoutes: {
       screen: MainRoutes,
+      navigationOptions: ({ navigation }) => ({
+        header: () => (
+          <Header iconLeft={ICON_PROFILE_DARK} navigation={navigation} />
+        ),
+      }),
     },
   },
   {
@@ -85,4 +104,20 @@ const Router = createStackNavigator(
   },
 );
 
-export default Router;
+const createRootNavigator = (isSignedIn: false) => (
+  createSwitchNavigator(
+    {
+      Authenticated: {
+        screen: Authenticated,
+      },
+      NotAuthenticated: {
+        screen: NotAuthenticated,
+      },
+    },
+    {
+      initialRouteName: isSignedIn ? 'Authenticated' : 'NotAuthenticated',
+    },
+  )
+);
+
+export default createRootNavigator;

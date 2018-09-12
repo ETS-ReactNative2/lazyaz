@@ -6,13 +6,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { connect } from 'react-redux';
 
 import {
   ImageContainer,
   GradientButton,
   Header,
   ImageButton,
-  Separator,
+  SeparatorLine,
 } from '../../Components';
 import {
   ICON_CARD,
@@ -20,33 +21,56 @@ import {
   ICON_ARROW_LOCATION,
   ICON_PROFILE,
 } from '../../Images';
-import { Constants } from '../../Themes';
+import { INPUT_EMAIL, INPUT_PASSWORD } from '../../Constants/TextConstants';
 import styles from './styles';
+import { login } from '../../Actions/User';
 
 class LogIn extends Component {
   constructor(props) {
     super(props);
-    this.props = props;
+    this.state = {
+      username: '',
+      password: '',
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { auth } = this.props;
+    if (auth !== nextProps.auth) {
+      this.handleNavigation();
+    }
   }
 
   handlePressLogin = () => {
-    const { navigation } = this.props;
-    navigation.navigate('MainRoutes');
+    const { dispatch } = this.props;
+    const { username, password } = this.state;
+    if (username && password) {
+      dispatch(login(username, password));
+    }
   }
 
-  handlePressBack = () => {
+  handleChangeUsername = (text) => {
+    this.setState({ username: text });
+  }
+
+  handleChangePassword = (text) => {
+    this.setState({ password: text });
+  }
+
+  handleNavigation = () => {
     const { navigation } = this.props;
-    navigation.goBack(null);
+    navigation.navigate('Authenticated');
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <ImageContainer>
         <Header
           iconLeft={ICON_ARROW_LEFT}
           iconMiddle={ICON_PROFILE}
-          onPressIconLeft={this.handlePressBack}
           text="Log In"
+          navigation={navigation}
         />
         <View style={styles.container}>
           <View style={styles.middleItems}>
@@ -59,10 +83,11 @@ class LogIn extends Component {
                 returnKeyType="next"
                 autoCapitalize="none"
                 autoCorrect={false}
+                onChangeText={this.handleChangeUsername}
                 underlineColorAndroid="transparent"
-                placeholder={Constants.INPUT_EMAIL}
+                placeholder={INPUT_EMAIL}
               />
-              <Separator />
+              <SeparatorLine />
             </View>
             <View style={styles.row}>
               <TextInput
@@ -72,11 +97,12 @@ class LogIn extends Component {
                 returnKeyType="go"
                 autoCapitalize="none"
                 autoCorrect={false}
+                onChangeText={this.handleChangePassword}
                 secureTextEntry
                 underlineColorAndroid="transparent"
-                placeholder={Constants.INPUT_PASSWORD}
+                placeholder={INPUT_PASSWORD}
               />
-              <Separator />
+              <SeparatorLine />
             </View>
             <TouchableOpacity style={styles.textContainer}>
               <Text style={styles.text}>
@@ -103,6 +129,12 @@ class LogIn extends Component {
 
 LogIn.propTypes = {
   navigation: PropTypes.object,
+  dispatch: PropTypes.func,
+  auth: PropTypes.object,
 };
 
-export default LogIn;
+const mapStateToProps = state => ({
+  auth: state.user.auth,
+});
+
+export default connect(mapStateToProps)(LogIn);

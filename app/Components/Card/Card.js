@@ -11,7 +11,7 @@ const Card = ({
   places,
 }) => (
   <ImageBackground
-    source={image}
+    source={{ uri: image }}
     style={styles.background}
   >
     <View style={[styles.overlay]} />
@@ -23,8 +23,8 @@ const Card = ({
 );
 
 Card.propTypes = {
-  image: PropTypes.number,
   places: PropTypes.number,
+  image: PropTypes.string,
   title: PropTypes.string,
 };
 

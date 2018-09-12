@@ -9,7 +9,7 @@ import {
   ImageContainer,
 } from '../../Components';
 import { ICON_DOTS, ICON_ARROW_DOWN, LOGO_MAIN } from '../../Images';
-import { Constants } from '../../Themes';
+import { BTN_DARK, BTN_LIGHT } from '../../Constants/TextConstants';
 import styles from './styles';
 
 class LoginSignup extends Component {
@@ -39,7 +39,7 @@ class LoginSignup extends Component {
             />
             <Button
               text="Login with Facebook"
-              type={Constants.BTN_LIGHT}
+              type={BTN_LIGHT}
               logo
             />
             <Image
@@ -53,7 +53,7 @@ class LoginSignup extends Component {
             <View style={styles.middleView} />
             <Button
               text="Sign Up"
-              type={Constants.BTN_DARK}
+              type={BTN_DARK}
             />
           </View>
           <View style={styles.bottomContainer}>
