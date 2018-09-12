@@ -1,13 +1,5 @@
 export const BG_PAPERBAG = require('../Images/Backgrounds/paperbag.png');
 export const BG_PIZZA = require('../Images/Backgrounds/pizza.jpg');
-export const CATEGORY_AMERICAN = require('../Images/Categories/americanfood.jpg');
-export const CATEGORY_ASIAN = require('../Images/Categories/asian.jpg');
-export const CATEGORY_COFFEE = require('../Images/Categories/coffee.jpg');
-export const CATEGORY_CONVENIENCE = require('../Images/Categories/convenience.jpg');
-export const CATEGORY_EUROPEAN = require('../Images/Categories/eurofood.jpg');
-export const CATEGORY_HEALTHY = require('../Images/Categories/healthy.jpg');
-export const CATEGORY_MIDDLE_EASTERN = require('../Images/Categories/easternfood.jpg');
-export const CATEGORY_OTHER = require('../Images/Categories/otherfood.jpg');
 export const ICON_ARROW_DOWN = require('../Images/Icons/arrowDown.png');
 export const ICON_ARROW_DROPDOWN = require('../Images/Icons/arrowDropdown.png');
 export const ICON_ARROW_LEFT = require('../Images/Icons/arrowLeft.png');

@@ -3,6 +3,7 @@ import { LoginSignup } from './LoginSignup';
 import Main from './Main';
 import { MainGoods } from './MainGoods';
 import { Onboarding } from './Onboarding';
+import { Profile } from './Profile';
 
 export {
   LogIn,
@@ -10,4 +11,5 @@ export {
   Main,
   MainGoods,
   Onboarding,
+  Profile,
 };

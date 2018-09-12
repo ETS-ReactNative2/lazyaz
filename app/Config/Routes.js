@@ -12,6 +12,7 @@ import {
   Main,
   MainGoods,
   Onboarding,
+  Profile,
 } from '../Screens';
 import { ICON_PROFILE_DARK, ICON_ORDER } from '../Images';
 import { Colors } from '../Themes';
@@ -63,6 +64,12 @@ const Authenticated = createStackNavigator(
           <Header iconLeft={ICON_PROFILE_DARK} iconRight={ICON_ORDER} navigation={navigation} />
         ),
       }),
+    },
+    Profile: {
+      screen: Profile,
+      navigationOptions: {
+        header: null,
+      },
     },
   },
   {

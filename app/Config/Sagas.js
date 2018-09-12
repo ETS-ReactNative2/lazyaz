@@ -14,6 +14,9 @@ import {
   LOGIN,
   LOGIN_FAILURE,
   LOGIN_SUCCESS,
+  LOGOUT,
+  LOGOUT_FAILURE,
+  LOGOUT_SUCCESS,
 } from '../Actions/User';
 import ApiConstants from '../Constants/ApiConstants';
 
@@ -47,6 +50,32 @@ function* login(action) {
   }
 }
 
+function* logout(action) {
+  const url = `${ApiConstants.API_URL}api/v1/users/logout`;
+  const headers = {
+    headers: {
+      Authorization: `${action.auth.token_type} ${action.auth.access_token}`,
+    },
+  };
+
+  try {
+    yield call(
+      axios.delete,
+      url,
+      headers,
+    );
+    yield put({
+      type: LOGOUT_SUCCESS,
+    });
+  } catch (error) {
+    yield put({
+      type: LOGOUT_FAILURE,
+      error: error.message,
+      auth: action.auth,
+    });
+  }
+}
+
 function* getMainCategorySaga() {
   const url = `${ApiConstants.API_URL}api/v1/services`;
   try {
@@ -70,6 +99,7 @@ function* getMainCategorySaga() {
 function* rootSaga() {
   yield takeLatest(LOGIN, login);
   yield takeLatest(GET_MAIN_CATEGORY, getMainCategorySaga);
+  yield takeLatest(LOGOUT, logout);
 }
 
 export default rootSaga;
