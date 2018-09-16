@@ -7,7 +7,6 @@ const deviceWidth = Dimensions.get('window').width;
 const buttonDistance = deviceWidth / 8;
 
 const styles = EStyleSheet.create({
-  statusbarColor: '$primaryGrey',
   mainContainer: {
     height: '100%',
     flexDirection: 'column',

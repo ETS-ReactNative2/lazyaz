@@ -8,16 +8,16 @@ import {
 } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
-import { ICON_FACEBOOK } from '../../Images';
-import { BTN_DARK, BTN_LIGHT } from '../../Constants/TextConstants';
+import { BTN_DARK, BTN_LIGHT, BTN_OUTLINE } from '../../Constants/TextConstants';
 import styles from './styles';
 
 const Button = ({
   height = 48,
-  width = '75%',
+  width,
   text,
   type,
   logo,
+  color,
   onPress,
 }) => {
   const buttonStyles = [
@@ -32,13 +32,14 @@ const Button = ({
     buttonStyles.push(styles.lightButton);
   } else if (type === BTN_DARK) {
     buttonStyles.push(styles.darkButton);
+  } else if (type === BTN_OUTLINE) {
+    buttonStyles.push(styles.outlineButton);
   }
 
   const textStyles = [
     styles.text,
     { lineHeight: height },
   ];
-  textStyles.push(type === BTN_LIGHT ? styles.darkText : styles.lightText);
 
   return (
     <TouchableOpacity onPress={onPress}>
@@ -46,10 +47,10 @@ const Button = ({
         {logo && (
           <Image
             style={styles.logo}
-            source={ICON_FACEBOOK}
+            source={logo}
           />
         )}
-        <Text style={textStyles}>
+        <Text style={[textStyles, { color }]}>
           {text.toUpperCase()}
         </Text>
       </View>
@@ -58,11 +59,12 @@ const Button = ({
 };
 
 Button.propTypes = {
-  logo: PropTypes.bool,
+  logo: PropTypes.number,
+  width: PropTypes.string,
   height: PropTypes.number,
   text: PropTypes.string,
   type: PropTypes.string,
-  width: PropTypes.string,
+  color: PropTypes.string,
   onPress: PropTypes.func,
 };
 

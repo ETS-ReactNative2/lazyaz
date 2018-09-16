@@ -16,8 +16,10 @@ const size = {
   small: '12rem',
   tiny: '8.5rem',
 
-  tabNavigator: '11rem',
+  profileName: '32rem',
+  heading: '14rem',
   chip: '13rem',
+  tabNavigator: '11rem',
 };
 
 export default { type, size };

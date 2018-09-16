@@ -10,6 +10,7 @@ const GradientButton = ({
   width,
   text,
   onPress,
+  color = styles.$colorWhite,
 }) => (
   <LinearGradient
     colors={[styles.$gradientColorOne, styles.$gradientColorTwo]}
@@ -22,6 +23,7 @@ const GradientButton = ({
       width={width}
       text={text}
       onPress={onPress}
+      color={color}
     />
   </LinearGradient>
 );
@@ -30,6 +32,7 @@ GradientButton.propTypes = {
   height: PropTypes.number,
   text: PropTypes.string,
   width: PropTypes.string,
+  color: PropTypes.string,
   onPress: PropTypes.func,
 };
 

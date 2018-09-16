@@ -5,7 +5,7 @@ import {
   createSwitchNavigator,
 } from 'react-navigation';
 
-import { Header, TabItem } from '../Components';
+import { HeaderMain, TabItem } from '../Components';
 import {
   LogIn,
   LoginSignup,
@@ -32,7 +32,7 @@ const MainRoutes = createMaterialTopTabNavigator(
       },
     },
     MainServices: {
-      screen: props => <Main {...props} title="Services" />,
+      screen: props => <Main {...props} title="Services" height="30%" />,
       navigationOptions: {
         tabBarLabel: props => <TabItem title="Services" {...props} />,
       },
@@ -61,7 +61,7 @@ const Authenticated = createStackNavigator(
       screen: MainRoutes,
       navigationOptions: ({ navigation }) => ({
         header: () => (
-          <Header iconLeft={ICON_PROFILE_DARK} iconRight={ICON_ORDER} navigation={navigation} />
+          <HeaderMain iconLeft={ICON_PROFILE_DARK} iconRight={ICON_ORDER} navigation={navigation} />
         ),
       }),
     },
@@ -101,7 +101,7 @@ const NotAuthenticated = createStackNavigator(
       screen: MainRoutes,
       navigationOptions: ({ navigation }) => ({
         header: () => (
-          <Header iconLeft={ICON_PROFILE_DARK} navigation={navigation} />
+          <HeaderMain iconLeft={ICON_PROFILE_DARK} navigation={navigation} />
         ),
       }),
     },
