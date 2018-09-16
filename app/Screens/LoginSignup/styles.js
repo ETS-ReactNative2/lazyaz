@@ -1,6 +1,7 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const styles = EStyleSheet.create({
+  $colorWhite: '$white',
   mainContainer: {
     flex: 1,
     justifyContent: 'center',

@@ -22,8 +22,8 @@ import {
   ICON_PROFILE,
 } from '../../Images';
 import { INPUT_EMAIL, INPUT_PASSWORD } from '../../Constants/TextConstants';
-import styles from './styles';
 import { login } from '../../Actions/User';
+import styles from './styles';
 
 class LogIn extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class LogIn extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { auth } = this.props;
-    if (auth !== nextProps.auth) {
+    if (nextProps.auth && auth !== nextProps.auth) {
       this.handleNavigation();
     }
   }
@@ -62,15 +62,19 @@ class LogIn extends Component {
     navigation.navigate('Authenticated');
   }
 
-  render() {
+  onPressIconLeft = () => {
     const { navigation } = this.props;
+    navigation.goBack(null);
+  }
+
+  render() {
     return (
       <ImageContainer>
         <Header
           iconLeft={ICON_ARROW_LEFT}
           iconMiddle={ICON_PROFILE}
-          text="Log In"
-          navigation={navigation}
+          heading="Log In"
+          onPressIconLeft={this.onPressIconLeft}
         />
         <View style={styles.container}>
           <View style={styles.middleItems}>
@@ -113,6 +117,7 @@ class LogIn extends Component {
               <GradientButton
                 text="Log In"
                 onPress={this.handlePressLogin}
+                width="75%"
               />
             </View>
           </View>

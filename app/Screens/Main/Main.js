@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { Card, Container, SeparatorSpace } from '../../Components';
 import { getMainCategory } from '../../Actions/Main';
+import { getUserProfile } from '../../Actions/Profile';
 
 class Main extends Component {
   constructor(props) {
@@ -13,12 +14,16 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { auth, dispatch } = this.props;
     dispatch(getMainCategory());
+
+    if (auth && auth !== undefined) {
+      dispatch(getUserProfile(auth));
+    }
   }
 
   render() {
-    const { category, title } = this.props;
+    const { category, title, height } = this.props;
     const data = category && category.find(item => item.name === title);
     return (
       <Container>
@@ -29,6 +34,7 @@ class Main extends Component {
               image={item.image_url}
               title={item.name}
               places={item.places_count}
+              height={height}
             />
           )}
           keyExtractor={item => item.id}
@@ -43,6 +49,8 @@ Main.propTypes = {
   category: PropTypes.array,
   dispatch: PropTypes.func,
   title: PropTypes.string,
+  height: PropTypes.string,
+  auth: PropTypes.object,
 };
 
 const mapStateToProps = state => ({

@@ -1,8 +1,18 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { View } from 'react-native';
 
-import styles from './styles';
+const SeparatorSpace = ({ width, height = 1 }) => {
+  const spaceStyles = [{ width, height }];
 
-const SeparatorSpace = () => <View style={styles.space} />;
+  return (
+    <View style={spaceStyles} />
+  );
+};
+
+SeparatorSpace.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.number,
+};
 
 export default SeparatorSpace;

@@ -5,6 +5,7 @@ import { Fonts } from '../../Themes';
 const styles = EStyleSheet.create({
   $gradientColorOne: '$brightOrange',
   $gradientColorTwo: '$softRed',
+  $colorWhite: '$white',
   gradientWrapper: {
     borderRadius: 100,
   },
@@ -29,11 +30,12 @@ const styles = EStyleSheet.create({
   darkButton: {
     backgroundColor: '$black',
   },
+  outlineButton: {
+    borderWidth: 1.5,
+    borderColor: '$white',
+  },
   lightText: {
     color: '$white',
-  },
-  darkText: {
-    color: '$black',
   },
   buttonText: {
     letterSpacing: 1,

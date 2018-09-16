@@ -6,6 +6,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT,
+  LOGOUT_FAILURE,
+  LOGOUT_SUCCESS,
 } from '../Actions/User';
 import { Auth } from '../Constants/Types';
 
@@ -40,7 +42,16 @@ const UserReducer = (state = initialState, action) => {
     case LOGOUT:
       return {
         ...initialState,
-        isLoggedIn: false,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...initialState,
+      };
+    case LOGOUT_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        auth: action.auth,
       };
     default:
       return state;

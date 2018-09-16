@@ -3,7 +3,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { Fonts } from '../../Themes';
 
 const styles = EStyleSheet.create({
-  $backgroundColor: '$white',
+  $colorWhite: '$white',
   topContainer: {
     flexDirection: 'row',
     alignItems: 'flex-end',
@@ -29,9 +29,14 @@ const styles = EStyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     fontFamily: Fonts.type.bold,
-    fontSize: Fonts.size.small,
     letterSpacing: 1,
     color: '$white',
+  },
+  middleText: {
+    fontSize: Fonts.size.heading,
+  },
+  heading: {
+    fontSize: Fonts.size.small,
   },
   locationText: {
     textAlign: 'center',

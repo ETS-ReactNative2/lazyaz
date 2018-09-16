@@ -8,7 +8,12 @@ import {
   ImageButton,
   ImageContainer,
 } from '../../Components';
-import { ICON_DOTS, ICON_ARROW_DOWN, LOGO_MAIN } from '../../Images';
+import {
+  ICON_DOTS,
+  ICON_ARROW_DOWN,
+  LOGO_MAIN,
+  ICON_FACEBOOK,
+} from '../../Images';
 import { BTN_DARK, BTN_LIGHT } from '../../Constants/TextConstants';
 import styles from './styles';
 
@@ -40,7 +45,8 @@ class LoginSignup extends Component {
             <Button
               text="Login with Facebook"
               type={BTN_LIGHT}
-              logo
+              logo={ICON_FACEBOOK}
+              width="75%"
             />
             <Image
               source={ICON_DOTS}
@@ -49,11 +55,14 @@ class LoginSignup extends Component {
             <GradientButton
               text="Log In"
               onPress={this.handlePressLogin}
+              width="75%"
             />
             <View style={styles.middleView} />
             <Button
               text="Sign Up"
               type={BTN_DARK}
+              width="75%"
+              color={styles.$colorWhite}
             />
           </View>
           <View style={styles.bottomContainer}>

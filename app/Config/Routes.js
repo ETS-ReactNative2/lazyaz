@@ -5,13 +5,14 @@ import {
   createSwitchNavigator,
 } from 'react-navigation';
 
-import { Header, TabItem } from '../Components';
+import { HeaderMain, TabItem } from '../Components';
 import {
   LogIn,
   LoginSignup,
   Main,
-  MainGoods,
+  MainOccasions,
   Onboarding,
+  Profile,
 } from '../Screens';
 import { ICON_PROFILE_DARK, ICON_ORDER } from '../Images';
 import { Colors } from '../Themes';
@@ -31,13 +32,13 @@ const MainRoutes = createMaterialTopTabNavigator(
       },
     },
     MainServices: {
-      screen: props => <Main {...props} title="Services" />,
+      screen: props => <Main {...props} title="Services" height="30%" />,
       navigationOptions: {
         tabBarLabel: props => <TabItem title="Services" {...props} />,
       },
     },
     MainOccasions: {
-      screen: MainGoods,
+      screen: MainOccasions,
       navigationOptions: {
         tabBarLabel: props => <TabItem title="Occasions" {...props} />,
       },
@@ -60,9 +61,15 @@ const Authenticated = createStackNavigator(
       screen: MainRoutes,
       navigationOptions: ({ navigation }) => ({
         header: () => (
-          <Header iconLeft={ICON_PROFILE_DARK} iconRight={ICON_ORDER} navigation={navigation} />
+          <HeaderMain iconLeft={ICON_PROFILE_DARK} iconRight={ICON_ORDER} navigation={navigation} />
         ),
       }),
+    },
+    Profile: {
+      screen: Profile,
+      navigationOptions: {
+        header: null,
+      },
     },
   },
   {
@@ -94,7 +101,7 @@ const NotAuthenticated = createStackNavigator(
       screen: MainRoutes,
       navigationOptions: ({ navigation }) => ({
         header: () => (
-          <Header iconLeft={ICON_PROFILE_DARK} navigation={navigation} />
+          <HeaderMain iconLeft={ICON_PROFILE_DARK} navigation={navigation} />
         ),
       }),
     },

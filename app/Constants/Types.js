@@ -22,3 +22,12 @@ export type Auth = {
   access_token: string,
   refresh_token: string,
 }
+
+export type Profile = {
+  name: string,
+  email: string,
+  phone: string,
+  driver_licence: string,
+  place_id: number,
+  profile_image_url: string,
+}
