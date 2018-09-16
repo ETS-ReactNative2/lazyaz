@@ -2,11 +2,13 @@ import { combineReducers } from 'redux';
 
 import User from './User';
 import Main from './Main';
+import Profile from './Profile';
 import { LOGOUT_SUCCESS } from '../Actions/User';
 
 const appReducer = combineReducers({
   user: User,
   main: Main,
+  profile: Profile,
 });
 
 const rootReducer = (state, action) => {

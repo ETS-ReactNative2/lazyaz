@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { Card, Container, SeparatorSpace } from '../../Components';
 import { getMainCategory } from '../../Actions/Main';
+import { getUserProfile } from '../../Actions/Profile';
 
 class Main extends Component {
   constructor(props) {
@@ -13,8 +14,12 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { auth, dispatch } = this.props;
     dispatch(getMainCategory());
+
+    if (auth && auth !== undefined) {
+      dispatch(getUserProfile(auth));
+    }
   }
 
   render() {
@@ -45,6 +50,7 @@ Main.propTypes = {
   dispatch: PropTypes.func,
   title: PropTypes.string,
   height: PropTypes.string,
+  auth: PropTypes.object,
 };
 
 const mapStateToProps = state => ({

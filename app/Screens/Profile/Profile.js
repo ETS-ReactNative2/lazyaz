@@ -38,7 +38,7 @@ class Profile extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { auth } = this.props;
-    if (auth !== nextProps.auth) {
+    if (auth && auth !== nextProps.auth) {
       this.handleNavigation();
     }
   }
@@ -63,6 +63,7 @@ class Profile extends Component {
   };
 
   render() {
+    const { profile } = this.props;
     return (
       <ScrollView style={styles.mainContainer}>
         <Container>
@@ -79,13 +80,13 @@ class Profile extends Component {
             />
             <View style={styles.textContainer}>
               <Text style={[styles.textName, styles.textWhite]}>
-                Nathaniel White
+                {profile.name}
               </Text>
               <Text style={[styles.text, styles.textWhite]}>
-                nathaniel.white@gmail.com
+                {profile.email}
               </Text>
               <Text style={[styles.text, styles.textWhite]}>
-                +64 21 123 456
+                {profile.phone}
               </Text>
             </View>
             <View style={styles.mainButtonContainer}>
@@ -217,10 +218,12 @@ Profile.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
   auth: PropTypes.object,
+  profile: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
   auth: state.user.auth,
+  profile: state.profile.profile,
 });
 
 export default connect(mapStateToProps)(Profile);

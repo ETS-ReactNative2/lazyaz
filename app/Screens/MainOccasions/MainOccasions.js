@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { Container } from '../../Components';
 import styles from './styles';
 
-class MainGoods extends Component {
+class MainOccasions extends Component {
   constructor(props) {
     super(props);
     this.props = props;
@@ -19,4 +19,4 @@ class MainGoods extends Component {
   }
 }
 
-export default MainGoods;
+export default MainOccasions;

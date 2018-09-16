@@ -10,7 +10,7 @@ import {
   LogIn,
   LoginSignup,
   Main,
-  MainGoods,
+  MainOccasions,
   Onboarding,
   Profile,
 } from '../Screens';
@@ -38,7 +38,7 @@ const MainRoutes = createMaterialTopTabNavigator(
       },
     },
     MainOccasions: {
-      screen: MainGoods,
+      screen: MainOccasions,
       navigationOptions: {
         tabBarLabel: props => <TabItem title="Occasions" {...props} />,
       },

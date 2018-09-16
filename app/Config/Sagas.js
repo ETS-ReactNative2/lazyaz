@@ -18,9 +18,14 @@ import {
   LOGOUT_FAILURE,
   LOGOUT_SUCCESS,
 } from '../Actions/User';
+import {
+  GET_USER_PROFILE,
+  GET_USER_PROFILE_FAILURE,
+  GET_USER_PROFILE_SUCCESS,
+} from '../Actions/Profile';
 import ApiConstants from '../Constants/ApiConstants';
 
-function* login(action) {
+function* loginSaga(action) {
   const url = `${ApiConstants.API_URL}oauth/token`;
   const params = {
     username: action.username,
@@ -50,7 +55,7 @@ function* login(action) {
   }
 }
 
-function* logout(action) {
+function* logoutSaga(action) {
   const url = `${ApiConstants.API_URL}api/v1/users/logout`;
   const headers = {
     headers: {
@@ -96,10 +101,37 @@ function* getMainCategorySaga() {
   }
 }
 
+function* getUserProfileSaga(action) {
+  const url = `${ApiConstants.API_URL}api/v1/users`;
+  const headers = {
+    headers: {
+      Authorization: `${action.auth.token_type} ${action.auth.access_token}`,
+    },
+  };
+  try {
+    const response = yield call(
+      axios.get,
+      url,
+      headers,
+    );
+
+    yield put({
+      type: GET_USER_PROFILE_SUCCESS,
+      profile: response.data,
+    });
+  } catch (error) {
+    yield put({
+      type: GET_USER_PROFILE_FAILURE,
+      error: error.message,
+    });
+  }
+}
+
 function* rootSaga() {
-  yield takeLatest(LOGIN, login);
+  yield takeLatest(LOGIN, loginSaga);
   yield takeLatest(GET_MAIN_CATEGORY, getMainCategorySaga);
-  yield takeLatest(LOGOUT, logout);
+  yield takeLatest(LOGOUT, logoutSaga);
+  yield takeLatest(GET_USER_PROFILE, getUserProfileSaga);
 }
 
 export default rootSaga;

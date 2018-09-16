@@ -15,7 +15,7 @@ import styles from './styles';
 class HeaderMain extends Component {
   onPressIconLeft = () => {
     const { auth, navigation } = this.props;
-    if (auth !== undefined) {
+    if (auth && auth !== undefined) {
       navigation.navigate('Profile');
     } else {
       navigation.goBack(null);
