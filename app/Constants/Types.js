@@ -31,3 +31,23 @@ export type Profile = {
   place_id: number,
   profile_image_url: string,
 }
+
+export type OccasionType = {
+  id: string,
+  image_url: string,
+  banner_url: string,
+}
+
+export type OccasionSet = {
+  id: string,
+  name: string,
+  total_price: number,
+}
+
+export type Occasion = {
+  id: string,
+  title: string,
+  description: string,
+  type: OccasionType,
+  sets: Array<OccasionSet>,
+}

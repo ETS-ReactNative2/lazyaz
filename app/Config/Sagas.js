@@ -23,6 +23,11 @@ import {
   GET_USER_PROFILE_FAILURE,
   GET_USER_PROFILE_SUCCESS,
 } from '../Actions/Profile';
+import {
+  GET_MAIN_OCCASION,
+  GET_MAIN_OCCASION_SUCCESS,
+  GET_MAIN_OCCASION_FAILURE,
+} from '../Actions/MainOccasion';
 import ApiConstants from '../Constants/ApiConstants';
 
 function* loginSaga(action) {
@@ -101,6 +106,26 @@ function* getMainCategorySaga() {
   }
 }
 
+function* getMainOccasionSaga() {
+  const url = `${ApiConstants.API_URL}api/v1/occasions`;
+  try {
+    const response = yield call(
+      axios.get,
+      url,
+    );
+
+    yield put({
+      type: GET_MAIN_OCCASION_SUCCESS,
+      occasions: response.data,
+    });
+  } catch (error) {
+    yield put({
+      type: GET_MAIN_OCCASION_FAILURE,
+      error: error.message,
+    });
+  }
+}
+
 function* getUserProfileSaga(action) {
   const url = `${ApiConstants.API_URL}api/v1/users`;
   const headers = {
@@ -130,6 +155,7 @@ function* getUserProfileSaga(action) {
 function* rootSaga() {
   yield takeLatest(LOGIN, loginSaga);
   yield takeLatest(GET_MAIN_CATEGORY, getMainCategorySaga);
+  yield takeLatest(GET_MAIN_OCCASION, getMainOccasionSaga);
   yield takeLatest(LOGOUT, logoutSaga);
   yield takeLatest(GET_USER_PROFILE, getUserProfileSaga);
 }

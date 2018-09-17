@@ -18,6 +18,7 @@ import {
   Button,
   SeparatorSpace,
   SeparatorLine,
+  connectAlert,
 } from '../../Components';
 import {
   ICON_ARROW_LEFT,
@@ -28,6 +29,7 @@ import {
 } from '../../Images';
 import { BTN_LIGHT, BTN_OUTLINE } from '../../Constants/TextConstants';
 import { logout } from '../../Actions/User';
+import { getUserProfile } from '../../Actions/Profile';
 import styles from './styles';
 
 class Profile extends Component {
@@ -36,8 +38,18 @@ class Profile extends Component {
     this.props = props;
   }
 
+  componentWillMount() {
+    const { auth, dispatch } = this.props;
+    if (auth && auth !== undefined) {
+      dispatch(getUserProfile(auth));
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
-    const { auth } = this.props;
+    const { auth, alertWithType } = this.props;
+    if (nextProps.error) {
+      alertWithType('error', 'Error', nextProps.error);
+    }
     if (auth && auth !== nextProps.auth) {
       this.handleNavigation();
     }
@@ -59,7 +71,8 @@ class Profile extends Component {
   }
 
   handlePressSite = () => {
-    Linking.openURL('https://lazyaz.co.nz/');
+    const { alertWithType } = this.props;
+    Linking.openURL('https://lazyaz.co.nz/').catch(() => alertWithType('error', 'Error', "LazyAz can't be opened"));
   };
 
   render() {
@@ -219,11 +232,14 @@ Profile.propTypes = {
   dispatch: PropTypes.func,
   auth: PropTypes.object,
   profile: PropTypes.object,
+  alertWithType: PropTypes.func,
+  error: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
   auth: state.user.auth,
   profile: state.profile.profile,
+  error: state.profile.error,
 });
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(connectAlert(Profile));

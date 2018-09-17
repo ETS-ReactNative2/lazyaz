@@ -7,6 +7,7 @@ import { persistStore } from 'redux-persist';
 import createRootNavigator from './Config/Routes';
 import { Colors, Metrics } from './Themes';
 import configureStore from './Config/Store';
+import { AlertProvider } from './Components';
 
 EStyleSheet.build({
   ...Colors,
@@ -47,7 +48,9 @@ class App extends Component {
     const Layout = createRootNavigator(isSignedIn);
     return (
       <Provider store={store}>
-        <Layout />
+        <AlertProvider>
+          <Layout />
+        </AlertProvider>
       </Provider>
     );
   }

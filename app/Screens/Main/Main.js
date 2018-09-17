@@ -3,9 +3,13 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import { connect } from 'react-redux';
 
-import { Card, Container, SeparatorSpace } from '../../Components';
+import {
+  Card,
+  Container,
+  SeparatorSpace,
+  connectAlert,
+} from '../../Components';
 import { getMainCategory } from '../../Actions/Main';
-import { getUserProfile } from '../../Actions/Profile';
 
 class Main extends Component {
   constructor(props) {
@@ -14,11 +18,14 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    const { auth, dispatch } = this.props;
+    const { dispatch } = this.props;
     dispatch(getMainCategory());
+  }
 
-    if (auth && auth !== undefined) {
-      dispatch(getUserProfile(auth));
+  componentWillReceiveProps(nextProps) {
+    const { alertWithType } = this.props;
+    if (nextProps.error) {
+      alertWithType('error', 'Error', nextProps.error);
     }
   }
 
@@ -50,12 +57,13 @@ Main.propTypes = {
   dispatch: PropTypes.func,
   title: PropTypes.string,
   height: PropTypes.string,
-  auth: PropTypes.object,
+  error: PropTypes.string,
+  alertWithType: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   category: state.main.category,
-  auth: state.user.auth,
+  error: state.main.error,
 });
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps)(connectAlert(Main));

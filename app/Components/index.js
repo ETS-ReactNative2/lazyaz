@@ -1,3 +1,4 @@
+import { AlertProvider, connectAlert } from './Alert';
 import { Button, GradientButton, ImageButton } from './Button';
 import { Card } from './Card';
 import { Chip } from './Chip';
@@ -7,9 +8,11 @@ import { SeparatorLine, SeparatorSpace } from './Separator';
 import { TabItem } from './TabItem';
 
 export {
+  AlertProvider,
   Button,
   Card,
   Chip,
+  connectAlert,
   Container,
   GradientButton,
   GradientContainer,
