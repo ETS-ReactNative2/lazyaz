@@ -8,7 +8,12 @@ import {
 } from 'react-native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
-import { BTN_DARK, BTN_LIGHT, BTN_OUTLINE } from '../../Constants/TextConstants';
+import {
+  BTN_DARK,
+  BTN_LIGHT,
+  BTN_OUTLINE,
+  BTN_GREY,
+} from '../../Constants/TextConstants';
 import styles from './styles';
 
 const Button = ({
@@ -34,6 +39,8 @@ const Button = ({
     buttonStyles.push(styles.darkButton);
   } else if (type === BTN_OUTLINE) {
     buttonStyles.push(styles.outlineButton);
+  } else if (type === BTN_GREY) {
+    buttonStyles.push(styles.greyButton);
   }
 
   const textStyles = [

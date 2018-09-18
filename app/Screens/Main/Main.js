@@ -10,6 +10,7 @@ import {
   connectAlert,
 } from '../../Components';
 import { getMainCategory } from '../../Actions/Main';
+import styles from './styles';
 
 class Main extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Main extends Component {
     const { category, title, height } = this.props;
     const data = category && category.find(item => item.name === title);
     return (
-      <Container>
+      <Container backgroundColor={styles.$backgroundColor}>
         <FlatList
           data={data !== null ? data.categories : null}
           renderItem={({ item }) => (
