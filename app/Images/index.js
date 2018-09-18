@@ -14,6 +14,7 @@ export const ICON_ORDER = require('../Images/Icons/order.png');
 export const ICON_PROFILE = require('../Images/Icons/profile.png');
 export const ICON_PROFILE_DARK = require('../Images/Icons/profileDark.png');
 export const ICON_PHONE = require('../Images/Icons/phoneIcon.png');
+export const ICON_SET = require('../Images/Icons/sets.png');
 export const ICON_WEBSITE = require('../Images/Icons/websiteIcon.png');
 export const LOGO_MAIN = require('../Images/Logos/logo.png');
 
@@ -34,6 +35,7 @@ export default {
   ICON_PROFILE,
   ICON_PROFILE_DARK,
   ICON_PHONE,
+  ICON_SET,
   ICON_WEBSITE,
   LOGO_MAIN,
 };

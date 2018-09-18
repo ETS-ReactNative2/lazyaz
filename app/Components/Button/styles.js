@@ -34,6 +34,9 @@ const styles = EStyleSheet.create({
     borderWidth: 1.5,
     borderColor: '$white',
   },
+  greyButton: {
+    backgroundColor: '$occasion',
+  },
   lightText: {
     color: '$white',
   },

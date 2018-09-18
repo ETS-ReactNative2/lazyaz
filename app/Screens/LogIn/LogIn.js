@@ -14,6 +14,7 @@ import {
   Header,
   ImageButton,
   SeparatorLine,
+  connectAlert,
 } from '../../Components';
 import {
   ICON_CARD,
@@ -35,7 +36,10 @@ class LogIn extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { auth } = this.props;
+    const { auth, alertWithType } = this.props;
+    if (nextProps.error) {
+      alertWithType('error', 'Error', nextProps.error);
+    }
     if (nextProps.auth && auth !== nextProps.auth) {
       this.handleNavigation();
     }
@@ -136,10 +140,13 @@ LogIn.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
   auth: PropTypes.object,
+  error: PropTypes.string,
+  alertWithType: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   auth: state.user.auth,
+  error: state.user.error,
 });
 
-export default connect(mapStateToProps)(LogIn);
+export default connect(mapStateToProps)(connectAlert(LogIn));

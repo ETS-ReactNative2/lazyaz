@@ -1,3 +1,4 @@
 import Main from './Main';
+import styles from './styles';
 
-export default Main;
+export { Main, styles };
