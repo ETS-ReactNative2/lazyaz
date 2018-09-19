@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  ScrollView,
   TouchableOpacity,
-  Image,
   Switch,
   Linking,
 } from 'react-native';
@@ -13,11 +11,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import { connect } from 'react-redux';
 
 import {
-  Container,
+  ScrollContainer,
   Header,
   Button,
   SeparatorSpace,
   SeparatorLine,
+  ListItem,
   connectAlert,
 } from '../../Components';
 import {
@@ -70,16 +69,48 @@ class Profile extends Component {
     navigation.navigate('NotAuthenticated');
   }
 
+  handlePhoneCall = () => {
+    const { alertWithType } = this.props;
+    Linking.openURL('tel://092830218').catch(() => alertWithType('error', 'Error', 'Unable to initiate call'));
+  };
+
+  handleSendEmail = () => {
+    const { alertWithType } = this.props;
+    Linking.openURL('mailto:contact@lazyaz.co.nz').catch(() => alertWithType('error', 'Error', 'Unable to send email'));
+  };
+
   handlePressSite = () => {
     const { alertWithType } = this.props;
-    Linking.openURL('https://lazyaz.co.nz/').catch(() => alertWithType('error', 'Error', "LazyAz can't be opened"));
+    Linking.openURL('https://lazyaz.co.nz/#/').catch(() => alertWithType('error', 'Error', 'Unable to open link'));
   };
+
+  handlePressTerms = () => {
+    const { alertWithType } = this.props;
+    Linking.openURL('https://lazyaz.co.nz/#/terms').catch(() => alertWithType('error', 'Error', 'Unable to open link'));
+  };
+
+  handlePressPrivacy = () => {
+    const { alertWithType } = this.props;
+    Linking.openURL('https://lazyaz.co.nz/#/privacy').catch(() => alertWithType('error', 'Error', 'Unable to open link'));
+  };
+
+  renderSectionHeading = text => (
+    <Text style={styles.textSectionHeading}>
+      {text.toUpperCase()}
+    </Text>
+  );
+
+  renderSectionText = text => (
+    <Text style={[styles.text, styles.textSectionBody]}>
+      {text}
+    </Text>
+  );
 
   render() {
     const { profile } = this.props;
     return (
-      <ScrollView style={styles.mainContainer}>
-        <Container>
+      <ScrollContainer>
+        <View>
           <LinearGradient
             colors={[styles.$gradientColorOne, styles.$gradientColorTwo]}
             start={{ x: 0.0, y: 1.0 }}
@@ -129,100 +160,64 @@ class Profile extends Component {
           <View style={styles.bottomContainer}>
             <View>
               <View style={styles.rowContainer}>
-                <Text style={styles.textSectionHeading}>
-                  {'Credit Cards'.toUpperCase()}
-                </Text>
+                { this.renderSectionHeading('Credit Cards') }
                 <TouchableOpacity>
                   <Text style={[styles.textSectionHeading, styles.textSectionHeadingButton]}>
                     {'Add New'.toUpperCase()}
                   </Text>
                 </TouchableOpacity>
               </View>
-              <Text style={[styles.text, styles.textSectionBody]}>
-                You have not added credit card yet.
-              </Text>
+              { this.renderSectionText('You have not added credit card yet.') }
             </View>
-            <View>
-              <View style={styles.settingsContainer}>
-                <Text style={styles.textSectionHeading}>
-                  {'Settings'.toUpperCase()}
-                </Text>
-                <View style={styles.rowContainer}>
-                  <Text style={[styles.text, styles.textSectionBody]}>
-                    Push Notifications
+            <View style={styles.settingsContainer}>
+              { this.renderSectionHeading('Settings') }
+              <View style={styles.rowContainer}>
+                { this.renderSectionText('Push Notifications') }
+                <Switch />
+              </View>
+              <View style={styles.rowContainer}>
+                <View style={styles.subtitleContainer}>
+                  <Text style={[styles.text, styles.textSectionBody, styles.textSubtitle]}>
+                    Get instant notifications about your orders updates.
                   </Text>
-                  <Switch />
                 </View>
-                <Text style={[styles.text, styles.textSectionBody, styles.textSubtitle]}>
-                  Get instant notifications about your orders updates.
-                </Text>
               </View>
             </View>
-            <View>
-              <View style={styles.aboutContainer}>
-                <Text style={styles.textSectionHeading}>
-                  {'About'.toUpperCase()}
-                </Text>
-                <View style={{ marginVertical: '3%' }} />
-                <SeparatorLine backgroundColor={styles.$colorGrey} />
-                <View>
-                  <TouchableOpacity style={[styles.rowContainer, styles.rowTouchable]}>
-                    <Text style={[styles.text, styles.textSectionBody]}>
-                      09 283 0218
-                    </Text>
-                    <Image source={ICON_PHONE} />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.rowTouchable} />
-                <SeparatorLine backgroundColor={styles.$colorGrey} />
-                <View>
-                  <TouchableOpacity style={[styles.rowContainer, styles.rowTouchable]}>
-                    <Text style={[styles.text, styles.textSectionBody]}>
-                      contact@lazyaz.co.nz
-                    </Text>
-                    <Image source={ICON_EMAIL} />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.rowView} />
-                <SeparatorLine backgroundColor={styles.$colorGrey} />
-                <View>
-                  <TouchableOpacity
-                    style={[styles.rowContainer, styles.rowTouchable]}
-                    onPress={this.handlePressSite}
-                  >
-                    <Text style={[styles.text, styles.textSectionBody]}>
-                      lazyaz.co.nz
-                    </Text>
-                    <Image source={ICON_WEBSITE} />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.rowView} />
-                <SeparatorLine backgroundColor={styles.$colorGrey} />
-                <View>
-                  <TouchableOpacity style={[styles.rowContainer, styles.rowTouchable]}>
-                    <Text style={[styles.text, styles.textSectionBody]}>
-                      Terms & Conditions
-                    </Text>
-                    <Image source={ICON_ARROW_RIGHT} />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.rowView} />
-                <SeparatorLine backgroundColor={styles.$colorGrey} />
-                <View>
-                  <TouchableOpacity style={[styles.rowContainer, styles.rowTouchable]}>
-                    <Text style={[styles.text, styles.textSectionBody]}>
-                      Privacy Policy
-                    </Text>
-                    <Image source={ICON_ARROW_RIGHT} />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.rowView} />
-                <SeparatorLine backgroundColor={styles.$colorGrey} />
-              </View>
+            <View style={styles.aboutContainer}>
+              { this.renderSectionHeading('About') }
+              <SeparatorLine
+                backgroundColor={styles.$colorGrey}
+                marginVertical={20}
+              />
+              <ListItem
+                text="09 283 0218"
+                image={ICON_PHONE}
+                onPress={this.handlePhoneCall}
+              />
+              <ListItem
+                text="contact@lazyaz.co.nz"
+                image={ICON_EMAIL}
+                onPress={this.handleSendEmail}
+              />
+              <ListItem
+                text="lazyaz.co.nz"
+                image={ICON_WEBSITE}
+                onPress={this.handlePressSite}
+              />
+              <ListItem
+                text="Terms & Conditions"
+                image={ICON_ARROW_RIGHT}
+                onPress={this.handlePressTerms}
+              />
+              <ListItem
+                text="Privacy Policy"
+                image={ICON_ARROW_RIGHT}
+                onPress={this.handlePressPrivacy}
+              />
             </View>
           </View>
-        </Container>
-      </ScrollView>
+        </View>
+      </ScrollContainer>
     );
   }
 }

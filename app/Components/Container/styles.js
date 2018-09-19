@@ -5,6 +5,7 @@ const styles = EStyleSheet.create({
   $gradientColorOne: '$greyLight',
   $gradientColorTwo: '$greyMedium',
   $gradientColorThree: '$greyDark',
+  $height: '$deviceHeight',
   container: {
     flex: 1,
     alignItems: 'center',
@@ -17,6 +18,12 @@ const styles = EStyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: '$overlay',
+  },
+  flex: {
+    flex: 1,
+  },
+  grow: {
+    flexGrow: 1,
   },
 });
 

@@ -12,11 +12,7 @@ const styles = EStyleSheet.create({
     justifyContent: 'center',
   },
   slider: {
-    marginTop: 15,
     overflow: 'visible',
-  },
-  background: {
-    height: '$deviceHeight',
   },
   paginationDot: {
     width: '10rem',
@@ -24,6 +20,9 @@ const styles = EStyleSheet.create({
     borderRadius: 100,
     borderWidth: 1.5,
     borderColor: '$primaryColor',
+  },
+  paginationContainer: {
+    // marginVertical: '-10rem',
   },
 });
 
