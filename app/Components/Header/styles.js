@@ -46,6 +46,7 @@ const styles = EStyleSheet.create({
   },
   image: {
     resizeMode: 'contain',
+    alignSelf: 'center',
   },
 });
 

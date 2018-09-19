@@ -5,7 +5,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 import {
   BottomBar,
-  Container,
+  ScrollContainer,
   SliderEntry,
   connectAlert,
 } from '../../Components';
@@ -20,7 +20,7 @@ class MainOccasion extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { dispatch } = this.props;
     dispatch(getMainOccasion());
   }
@@ -38,7 +38,7 @@ class MainOccasion extends Component {
     const { occasions } = this.props;
     const { currentIndex } = this.state;
     return (
-      <Container>
+      <ScrollContainer>
         <Carousel
           data={occasions}
           renderItem={this.renderItem}
@@ -52,25 +52,24 @@ class MainOccasion extends Component {
           enableMomentum
           activeSlideAlignment="start"
           containerCustomStyle={styles.slider}
-          contentContainerCustomStyle={styles.sliderContentContainer}
           activeAnimationType="spring"
           activeAnimationOptions={{
             friction: 4,
             tension: 40,
           }}
         />
-        <BottomBar destination={occasions[currentIndex]} />
+        <BottomBar destination={occasions && occasions[currentIndex]} />
         <Pagination
-          dotsLength={occasions.length}
+          dotsLength={occasions && occasions.length}
           activeDotIndex={currentIndex}
-          containerStyle={styles.paginationContainer}
           dotColor={styles.$dotColor}
           dotStyle={styles.paginationDot}
           inactiveDotOpacity={1}
           inactiveDotColor={styles.$inactiveDotColor}
           inactiveDotScale={0.6}
+          containerStyle={styles.paginationContainer}
         />
-      </Container>
+      </ScrollContainer>
     );
   }
 }

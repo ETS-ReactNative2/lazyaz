@@ -1,4 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 import { Fonts } from '../../Themes';
 
@@ -7,9 +8,9 @@ const styles = EStyleSheet.create({
   $gradientColorTwo: '$softRed',
   $colorGrey: '$separator',
   $colorWhite: '$white',
-  mainContainer: {
+  container: {
     flex: 1,
-    backgroundColor: '$white',
+    justifyContent: 'space-between',
   },
   gradientContainer: {
     height: '265rem',
@@ -29,6 +30,7 @@ const styles = EStyleSheet.create({
     flex: 1,
   },
   bottomContainer: {
+    flex: 1,
     backgroundColor: '$white',
     paddingVertical: '10%',
     paddingHorizontal: '20rem',
@@ -36,16 +38,17 @@ const styles = EStyleSheet.create({
   rowContainer: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
   settingsContainer: {
-    marginTop: '3%',
-    paddingVertical: '3%',
+    paddingVertical: '5%',
   },
   aboutContainer: {
-    marginTop: '5%',
-    paddingVertical: '5%',
+    paddingTop: '5%',
+  },
+  subtitleContainer: {
+    width: wp(60),
   },
   textWhite: {
     color: '$white',
@@ -70,15 +73,6 @@ const styles = EStyleSheet.create({
   },
   textSubtitle: {
     color: '$brightOrange',
-  },
-  textSectionBody: {
-    paddingVertical: '3%',
-  },
-  rowTouchable: {
-    paddingVertical: '5%',
-  },
-  rowView: {
-    marginVertical: '5%',
   },
 });
 

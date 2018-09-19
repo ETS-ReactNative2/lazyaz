@@ -13,7 +13,10 @@ const BottomBar = ({ destination }) => (
       {destination.title}
     </Text>
     <View style={styles.setsContainer}>
-      <Image source={ICON_SET} />
+      <Image
+        source={ICON_SET}
+        style={styles.image}
+      />
       <Text style={styles.sets}>
         {`${destination.sets.length} sets`}
       </Text>

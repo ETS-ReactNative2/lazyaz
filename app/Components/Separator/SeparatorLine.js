@@ -4,8 +4,11 @@ import { View } from 'react-native';
 
 import styles from './styles';
 
-const SeparatorLine = ({ backgroundColor = styles.$defaultColor }) => {
-  const lineStyles = [styles.line, { backgroundColor }];
+const SeparatorLine = ({
+  backgroundColor = styles.$defaultColor,
+  marginVertical,
+}) => {
+  const lineStyles = [styles.line, { backgroundColor, marginVertical }];
 
   return (
     <View style={lineStyles} />
@@ -14,6 +17,7 @@ const SeparatorLine = ({ backgroundColor = styles.$defaultColor }) => {
 
 SeparatorLine.propTypes = {
   backgroundColor: PropTypes.string,
+  marginVertical: PropTypes.number,
 };
 
 export default SeparatorLine;
