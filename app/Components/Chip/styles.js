@@ -17,6 +17,9 @@ const styles = EStyleSheet.create({
     fontFamily: Fonts.type.semibold,
     fontSize: Fonts.size.chip,
     color: '$white',
+    '@media ios': {
+      paddingTop: '4rem',
+    },
   },
 });
 

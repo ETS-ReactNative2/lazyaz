@@ -110,113 +110,115 @@ class Profile extends Component {
     const { profile } = this.props;
     return (
       <ScrollContainer>
-        <View>
-          <LinearGradient
-            colors={[styles.$gradientColorOne, styles.$gradientColorTwo]}
-            start={{ x: 0.0, y: 1.0 }}
-            end={{ x: 1.0, y: 1.0 }}
-            style={styles.gradientContainer}
-          >
-            <Header
-              iconLeft={ICON_ARROW_LEFT}
-              text="Profile"
-              onPressIconLeft={this.onPressIconLeft}
-            />
-            <View style={styles.textContainer}>
-              <Text style={[styles.textName, styles.textWhite]}>
-                {profile.name}
-              </Text>
-              <Text style={[styles.text, styles.textWhite]}>
-                {profile.email}
-              </Text>
-              <Text style={[styles.text, styles.textWhite]}>
-                {profile.phone}
-              </Text>
-            </View>
-            <View style={styles.mainButtonContainer}>
-              <View style={styles.buttonContainer}>
-                <Button
-                  text="Log Out"
-                  type={BTN_LIGHT}
-                  width="auto"
-                  color={styles.$gradientColorOne}
-                  onPress={this.onPressLogout}
-                />
-              </View>
-              <SeparatorSpace
-                height={0}
-                width="5%"
+        {profile && (
+          <View>
+            <LinearGradient
+              colors={[styles.$gradientColorOne, styles.$gradientColorTwo]}
+              start={{ x: 0.0, y: 1.0 }}
+              end={{ x: 1.0, y: 1.0 }}
+              style={styles.gradientContainer}
+            >
+              <Header
+                iconLeft={ICON_ARROW_LEFT}
+                text="Profile"
+                onPressIconLeft={this.onPressIconLeft}
               />
-              <View style={styles.buttonContainer}>
-                <Button
-                  text="Edit"
-                  type={BTN_OUTLINE}
-                  width="auto"
-                  color={styles.$colorWhite}
+              <View style={styles.textContainer}>
+                <Text style={[styles.textName, styles.textWhite]}>
+                  {profile.name}
+                </Text>
+                <Text style={[styles.text, styles.textWhite]}>
+                  {profile.email}
+                </Text>
+                <Text style={[styles.text, styles.textWhite]}>
+                  {profile.phone}
+                </Text>
+              </View>
+              <View style={styles.mainButtonContainer}>
+                <View style={styles.buttonContainer}>
+                  <Button
+                    text="Log Out"
+                    type={BTN_LIGHT}
+                    width="auto"
+                    color={styles.$gradientColorOne}
+                    onPress={this.onPressLogout}
+                  />
+                </View>
+                <SeparatorSpace
+                  height={0}
+                  width="5%"
                 />
-              </View>
-            </View>
-          </LinearGradient>
-          <View style={styles.bottomContainer}>
-            <View>
-              <View style={styles.rowContainer}>
-                { this.renderSectionHeading('Credit Cards') }
-                <TouchableOpacity>
-                  <Text style={[styles.textSectionHeading, styles.textSectionHeadingButton]}>
-                    {'Add New'.toUpperCase()}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-              { this.renderSectionText('You have not added credit card yet.') }
-            </View>
-            <View style={styles.settingsContainer}>
-              { this.renderSectionHeading('Settings') }
-              <View style={styles.rowContainer}>
-                { this.renderSectionText('Push Notifications') }
-                <Switch />
-              </View>
-              <View style={styles.rowContainer}>
-                <View style={styles.subtitleContainer}>
-                  <Text style={[styles.text, styles.textSectionBody, styles.textSubtitle]}>
-                    Get instant notifications about your orders updates.
-                  </Text>
+                <View style={styles.buttonContainer}>
+                  <Button
+                    text="Edit"
+                    type={BTN_OUTLINE}
+                    width="auto"
+                    color={styles.$colorWhite}
+                  />
                 </View>
               </View>
+            </LinearGradient>
+            <View style={styles.bottomContainer}>
+              <View>
+                <View style={styles.rowContainer}>
+                  { this.renderSectionHeading('Credit Cards') }
+                  <TouchableOpacity>
+                    <Text style={[styles.textSectionHeading, styles.textSectionHeadingButton]}>
+                      {'Add New'.toUpperCase()}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                { this.renderSectionText('You have not added credit card yet.') }
+              </View>
+              <View style={styles.settingsContainer}>
+                { this.renderSectionHeading('Settings') }
+                <View style={styles.rowContainer}>
+                  { this.renderSectionText('Push Notifications') }
+                  <Switch />
+                </View>
+                <View style={styles.rowContainer}>
+                  <View style={styles.subtitleContainer}>
+                    <Text style={[styles.text, styles.textSectionBody, styles.textSubtitle]}>
+                      Get instant notifications about your orders updates.
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.aboutContainer}>
+                { this.renderSectionHeading('About') }
+                <SeparatorLine
+                  backgroundColor={styles.$colorGrey}
+                  marginVertical={20}
+                />
+                <ListItem
+                  text="09 283 0218"
+                  image={ICON_PHONE}
+                  onPress={this.handlePhoneCall}
+                />
+                <ListItem
+                  text="contact@lazyaz.co.nz"
+                  image={ICON_EMAIL}
+                  onPress={this.handleSendEmail}
+                />
+                <ListItem
+                  text="lazyaz.co.nz"
+                  image={ICON_WEBSITE}
+                  onPress={this.handlePressSite}
+                />
+                <ListItem
+                  text="Terms & Conditions"
+                  image={ICON_ARROW_RIGHT}
+                  onPress={this.handlePressTerms}
+                />
+                <ListItem
+                  text="Privacy Policy"
+                  image={ICON_ARROW_RIGHT}
+                  onPress={this.handlePressPrivacy}
+                />
+              </View>
             </View>
-            <View style={styles.aboutContainer}>
-              { this.renderSectionHeading('About') }
-              <SeparatorLine
-                backgroundColor={styles.$colorGrey}
-                marginVertical={20}
-              />
-              <ListItem
-                text="09 283 0218"
-                image={ICON_PHONE}
-                onPress={this.handlePhoneCall}
-              />
-              <ListItem
-                text="contact@lazyaz.co.nz"
-                image={ICON_EMAIL}
-                onPress={this.handleSendEmail}
-              />
-              <ListItem
-                text="lazyaz.co.nz"
-                image={ICON_WEBSITE}
-                onPress={this.handlePressSite}
-              />
-              <ListItem
-                text="Terms & Conditions"
-                image={ICON_ARROW_RIGHT}
-                onPress={this.handlePressTerms}
-              />
-              <ListItem
-                text="Privacy Policy"
-                image={ICON_ARROW_RIGHT}
-                onPress={this.handlePressPrivacy}
-              />
-            </View>
-          </View>
-        </View>
+          </View>)
+        }
       </ScrollContainer>
     );
   }
@@ -235,6 +237,7 @@ const mapStateToProps = state => ({
   auth: state.user.auth,
   profile: state.profile.profile,
   error: state.profile.error,
+  isLoading: state.profile.isLoading,
 });
 
 export default connect(mapStateToProps)(connectAlert(Profile));
