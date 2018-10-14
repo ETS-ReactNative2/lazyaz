@@ -16,7 +16,7 @@ export const ICON_PROFILE_DARK = require('../Images/Icons/profileDark.png');
 export const ICON_PHONE = require('../Images/Icons/phoneIcon.png');
 export const ICON_SET = require('../Images/Icons/sets.png');
 export const ICON_WEBSITE = require('../Images/Icons/websiteIcon.png');
-export const LOGO_MAIN = require('../Images/Logos/logo.png');
+export const LOGO_MAIN = require('../Images/logos/logo.png');
 
 export default {
   BG_PAPERBAG,
