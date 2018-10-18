@@ -7,10 +7,7 @@ import { Chip, GradientButton } from '..';
 import styles from './styles';
 
 const Card = ({
-  image,
-  title,
-  places,
-  height = '20%',
+  image, title, places, height = '20%',
 }) => {
   const backgroundStyles = [
     styles.background,

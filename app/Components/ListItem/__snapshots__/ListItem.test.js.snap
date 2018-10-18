@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip component renders correctly 1`] = `
+<View>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text>
+      
+    </Text>
+    <Image
+      source={0}
+    />
+  </View>
+  <View
+    style={
+      Array [
+        undefined,
+        Object {
+          "backgroundColor": undefined,
+          "marginVertical": 20,
+        },
+      ]
+    }
+  />
+</View>
+`;

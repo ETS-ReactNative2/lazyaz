@@ -38,7 +38,7 @@ const styles = EStyleSheet.create({
     fontSize: Fonts.size.heading,
     lineHeight: Fonts.size.heading,
     color: '$sets',
-    marginHorizontal: '5rem',
+    marginLeft: '5rem',
     '@media ios': {
       paddingTop: '5rem',
     },

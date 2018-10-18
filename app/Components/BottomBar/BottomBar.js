@@ -18,8 +18,12 @@ const BottomBar = ({ destination }) => (
         style={styles.image}
       />
       <Text style={styles.sets}>
-        {`${destination.sets.length} sets`}
+        {Array.isArray(destination.sets) && destination.sets.length
+          ? destination.sets.length
+          : 0
+        }
       </Text>
+      <Text style={styles.sets}>sets</Text>
     </View>
     <Text style={styles.description}>
       {destination.description}
