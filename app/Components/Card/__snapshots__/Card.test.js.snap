@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component renders correctly 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      Object {
+        "height": 133.5,
+      },
+    ]
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": undefined,
+          "width": undefined,
+        },
+        undefined,
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        undefined,
+        Object {
+          "height": 133.5,
+        },
+      ]
+    }
+  />
+  <Text>
+    
+  </Text>
+  <View>
+    <Text>
+      You can use this service for delivery: documents, parcels, courier service and confidential paper delivery.
+    </Text>
+    <View>
+      <BVLinearGradient
+        colors={
+          Array [
+            undefined,
+            undefined,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 1,
+            "y": 1,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0,
+            "y": 1,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Array [
+                undefined,
+                Object {
+                  "flexDirection": null,
+                  "height": 48,
+                  "width": 375,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Array [
+                    undefined,
+                    Object {
+                      "lineHeight": 48,
+                    },
+                  ],
+                  Object {
+                    "color": undefined,
+                  },
+                ]
+              }
+            >
+              MAKE ORDER
+            </Text>
+          </View>
+        </View>
+      </BVLinearGradient>
+    </View>
+  </View>
+</View>
+`;
